@@ -1,0 +1,69 @@
+syntax = "proto3";
+option java_package = "screenremotecontrol";
+option java_outer_classname = "ProtoMsg";
+
+message Screen{
+  //数据发送方客户端名称
+  string sendName = 1;
+  //数据接收方客户端名称
+  string receiveName = 2;
+  //要发送的数据内容
+  string content = 3;
+  //标识位，用来进行各种判断
+  int32 status = 4;
+  //图片信息
+  Image image = 5;
+  //鼠标信息
+  Mouse mouse = 6;
+  //键盘信息
+  KeyBoard keyBoard = 7;
+}
+//图片消息
+message Image{
+  //图片数据
+  bytes data = 1;
+  //图片X坐标
+  int32 x = 2;
+  //图片y坐标
+  int32 y = 3;
+  //图片高度
+  int32 height = 4;
+  //图片宽度
+  int32 width = 5;
+  //图片编号
+  int32 number = 6;
+  //屏幕总宽度
+  int32 screenWidth = 7;
+  //屏幕总高度
+  int32 screenHeight = 8;
+  //裁剪后图片X坐标
+  int32 miniX = 9;
+  //裁剪后图片Y坐标
+  int32 miniY = 10;
+  //裁剪后图片的宽度
+  int32 miniWidth = 11;
+  //裁剪后图片的高度
+  int32 miniHeight = 12;
+}
+
+//鼠标消息
+message Mouse{
+  //鼠标X坐标
+  int32 mouseX = 1;
+  //鼠标Y坐标
+  int32 mouseY = 2;
+  //鼠标动作，点击、按下、松开、移动、拖拽、滚轮滑动、进入组件，退出组件
+  string mouseAction = 3;
+  //鼠标左键1，中建2，右键3
+  int32 mouseType = 4;
+  //鼠标滚轮转动的距离
+  int32 mouseWhileAmt = 5;
+}
+
+//键盘消息
+message KeyBoard{
+  //键盘动作，记录键盘按下的键
+  int32 keyCode = 1;
+  //键盘事件，按下、释放
+  int32 keyAction = 2;
+}
